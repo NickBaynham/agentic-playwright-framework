@@ -1,0 +1,48 @@
+- generic [ref=e94]:
+  - generic [ref=e95]:
+    - generic [ref=e96]:
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - button "Open Menu" [ref=e99] [cursor=pointer]
+          - img "Open Menu" [ref=e100]
+        - generic [ref=e102]: Swag Labs
+        - generic [ref=e105]: "1"
+      - generic [ref=e107]: "Checkout: Overview"
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - generic [ref=e111]: QTY
+        - generic [ref=e112]: Description
+        - generic [ref=e113]:
+          - generic [ref=e114]: "1"
+          - generic [ref=e115]:
+            - link "Sauce Labs Fleece Jacket" [ref=e116] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e117]: Sauce Labs Fleece Jacket
+            - generic [ref=e118]: It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.
+            - generic [ref=e120]: $49.99
+      - generic [ref=e121]:
+        - generic [ref=e122]: "Payment Information:"
+        - generic [ref=e123]: "SauceCard #31337"
+        - generic [ref=e124]: "Shipping Information:"
+        - generic [ref=e125]: Free Pony Express Delivery!
+        - generic [ref=e126]: Price Total
+        - generic [ref=e127]: "Item total: $49.99"
+        - generic [ref=e128]: "Tax: $4.00"
+        - generic [ref=e129]: "Total: $53.99"
+        - generic [ref=e130]:
+          - button "Go back Cancel" [ref=e131] [cursor=pointer]:
+            - img "Go back" [ref=e132]
+            - text: Cancel
+          - button "Finish" [ref=e133] [cursor=pointer]
+  - contentinfo [ref=e134]:
+    - list [ref=e135]:
+      - listitem [ref=e136]:
+        - link "Twitter" [ref=e137] [cursor=pointer]:
+          - /url: https://twitter.com/saucelabs
+      - listitem [ref=e138]:
+        - link "Facebook" [ref=e139] [cursor=pointer]:
+          - /url: https://www.facebook.com/saucelabs
+      - listitem [ref=e140]:
+        - link "LinkedIn" [ref=e141] [cursor=pointer]:
+          - /url: https://www.linkedin.com/company/sauce-labs/
+    - generic [ref=e142]: © 2026 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy

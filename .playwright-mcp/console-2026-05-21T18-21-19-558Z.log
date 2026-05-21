@@ -1,0 +1,6 @@
+[     195ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.saucedemo.com/cart.html:0
+[  129239ms] [ERROR] Not signed in with the identity provider. @ https://saucelabs.com/:0
+[  133277ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://saucelabs.com/_next/static/chunks/pages/_app-30bb14759b50159a.js:28
+[  135532ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.saucedemo.com/inventory.html:0
+[  141598ms] [ERROR] Not signed in with the identity provider. @ https://saucelabs.com/:0
+[  142534ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.saucedemo.com/inventory.html:0
