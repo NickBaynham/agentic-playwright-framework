@@ -65,12 +65,16 @@ def test_adding_product_updates_cart_badge_and_toggles_button(
     standard_user: User,
     backpack: Product,
 ) -> None:
-    """TC-02: Adding one product updates the cart badge and toggles the action button.
+    """TC-02: Adding a product places it in the cart.
+
+    Verifies both observable consequences of the single add-to-cart action:
+    the cart badge increments to 1 and the per-product action button toggles
+    from "Add to cart" to "Remove".
 
     Source:
         BDD Spec: specs/bdd/markdown/standard_user_checkout.md
         Feature:  specs/bdd/features/standard_user_checkout.feature
-        Scenario: TC-02 — Adding one product updates the cart badge and toggles the Add button to Remove
+        Scenario: TC-02 — Adding a product places it in the cart
     """
     # Arrange
     login_page.open()

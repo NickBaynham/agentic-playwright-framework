@@ -4,9 +4,11 @@
 
 Reviewed the `standard_user_checkout` BDD artifacts using `bdd_quality_checklist.md` and `ambiguity_and_defect_checklist.md`. The feature file is well-structured, selector-free, and traces back to the source exploration. Six High-priority smoke scenarios (TC-01–TC-06) are ready for automation modulo small fixes; two `@needs-clarification` scenarios (TC-07, TC-08) are correctly parked behind their open questions.
 
-This review surfaces four genuine clarity issues that the previous review pass missed: TC-04 precondition is silent about which item is in the cart, TC-02's title couples two outcomes, TC-05's "When the user reads…" is not a real user action, and TC-07's "just completed" introduces temporal vagueness.
+This review surfaced four genuine clarity issues that the previous review pass missed: TC-04 precondition is silent about which item is in the cart, TC-02's title couples two outcomes, TC-05's "When the user reads…" is not a real user action, and TC-07's "just completed" introduces temporal vagueness.
 
-Approval Recommendation: **Approved with Changes** — apply the Medium-severity fixes below, then promote to Approved. The two `@needs-clarification` scenarios remain blocked by their open questions and should not be automated in the next pass.
+**Status update:** M-2 (TC-02 title) and M-4 (TC-07 Given) have been Applied across the Gherkin, Markdown spec, traceability matrix, automation candidates, and the test docstring. M-1 is resolved in the implementation (the test explicitly adds the backpack during Arrange) but the spec Gherkin still uses the ambiguous wording. M-3 is a Gherkin-only concern; the Python test layout has no When/Then to be awkward about.
+
+Approval Recommendation: **Approved with Changes** — pending the remaining M-1 and M-3 spec phrasing tweaks. TC-01–TC-06 are implemented and passing.
 
 ## Reviewed Files
 
@@ -129,9 +131,9 @@ Approval Recommendation: **Approved with Changes** — apply the Medium-severity
 | ID | Issue | Severity | Recommendation |
 |---|---|---|---|
 | **M-1** | TC-04 precondition `Given the standard user is on the checkout information page with one item in the cart` does not specify which item. TC-05 and TC-06 say "Sauce Labs Backpack". This is an implicit assumption: the test could be set up with any item, but the data table only documents the form input. | Medium | Tighten the Given to `Given the standard user is on the checkout information page with "Sauce Labs Backpack" in the cart` (matches TC-05 and TC-06), or add a Cart Precondition row to the Test Data table. Apply the same change in the Markdown spec. |
-| **M-2** | TC-02 scenario title `Adding one product updates the cart badge and toggles the Add button to Remove` concatenates two outcomes. The Then steps check two assertions on the same user action; this is defensible (both are direct, immediate consequences of one click), but the title literally describes two behaviors. | Medium | Either (a) rename to a single-outcome title such as `Adding one product places it in the cart`, keeping both Then assertions as observable consequences of that one behavior, or (b) split into two scenarios: `cart badge updates after add` and `product button toggles to Remove after add`. Option (a) is recommended — keeps the test cohesive. |
+| **M-2** | TC-02 scenario title `Adding one product updates the cart badge and toggles the Add button to Remove` concatenates two outcomes. The Then steps check two assertions on the same user action; this is defensible (both are direct, immediate consequences of one click), but the title literally describes two behaviors. | Medium | **Applied (option a).** Renamed to `Adding a product places it in the cart`. Both Then assertions retained as observable consequences of the single user action. Priority Rationale updated to make the "two consequences of one action" reading explicit. Test docstring at `automation/tests/ui/test_standard_user_checkout.py::test_adding_product_updates_cart_badge_and_toggles_button` updated to reference the new scenario title. |
 | **M-3** | TC-05 step `When the user reads the Item total, Tax, and Total values` is not a user action that changes state; "reading" is implicit in any assertion. Awkward Gherkin. | Medium | Replace the When/Then pair with a single Then phrased as a state assertion: `Then the displayed Total equals the displayed Item total plus the displayed Tax` and drop the read-step. Move the precondition `the standard user is on the checkout overview page with "Sauce Labs Backpack" in the cart` into Given (already there). |
-| **M-4** | TC-07 precondition `Given the standard user has just completed a checkout` uses temporal language ("just"). Other scenarios anchor preconditions to a specific page. | Medium | Tighten to `Given the standard user is on the order confirmation page after completing a checkout`. The Markdown spec already says this; the Gherkin should match. |
+| **M-4** | TC-07 precondition `Given the standard user has just completed a checkout` uses temporal language ("just"). Other scenarios anchor preconditions to a specific page. | Medium | **Applied.** Both the Gherkin scenario and the Markdown spec's Given now read `the standard user is on the order confirmation page after completing a checkout`. TC-07 remains `@needs-clarification` because the cart-clear contract has not been confirmed. |
 | **L-1** | TC-03 step `And a Checkout action is available` uses an undefined "available" predicate. | Low | Tighten to `And a Checkout button is visible and enabled` (or `And the user can proceed to checkout`). |
 | **L-2** | Markdown spec Source Material lists snapshot filenames with an ellipsis (`page-2026-05-22T01-46-...`) rather than concrete filenames. | Low | Replace the ellipsis with the exact session snapshot filenames or remove the elided range entirely and link to the Action Timeline in the source session. |
 | **L-3** | TC-08 Scenario Outline uses empty cells in the Examples table to represent blank/missing input. Gherkin parses empty cells as empty strings, which is the intent, but a reader may not immediately know that. | Low | Add a brief comment line above the Examples table — e.g. `# Empty cell = field submitted with an empty string.` — or document the convention once in the Markdown spec. |
@@ -143,12 +145,12 @@ Approval Recommendation: **Approved with Changes** — apply the Medium-severity
 
 ## Recommended Revisions
 
-To move to **Approved**, apply the four Medium fixes (M-1 through M-4). The Low items can be addressed at the reviewer's discretion. Specifically:
+Status of the four Medium-severity fixes:
 
-1. **M-1:** Tighten TC-04 Given to name the cart item (both `.feature` and Markdown spec). Add a Cart Precondition row to the Markdown Test Data table.
-2. **M-2:** Rename TC-02 to a single-outcome title (recommend `Adding a product places it in the cart`). Both Then assertions remain.
-3. **M-3:** Collapse TC-05's When/Then into a single Then expressing the arithmetic identity. Update the Markdown spec to match.
-4. **M-4:** Replace TC-07's `just completed a checkout` with `is on the order confirmation page after completing a checkout` (Gherkin + Markdown spec).
+1. **M-1 — Deferred-and-resolved-in-implementation.** TC-04's Markdown Given still reads "with one item in the cart" without naming the item. The implementation in `automation/tests/ui/test_standard_user_checkout.py::test_checkout_information_advances_to_overview_with_valid_input` resolves the ambiguity by explicitly adding `Sauce Labs Backpack` during Arrange. The Gherkin should still be tightened on the next spec revision for review clarity, but it is not blocking automation.
+2. **M-2 — Applied.** TC-02 renamed to `Adding a product places it in the cart` across the `.feature` file, Markdown spec, traceability matrix, and automation candidate review. Test docstring updated. Both Then assertions retained.
+3. **M-3 — Deferred.** TC-05's Gherkin still reads `When the user reads the Item total, Tax, and Total values`. The Python test layout does not have a When/Then structure, so the awkward phrasing does not propagate into code. Apply on the next spec revision for review clarity.
+4. **M-4 — Applied.** TC-07 Given now reads `the standard user is on the order confirmation page after completing a checkout` in both the Gherkin and the Markdown spec. TC-07 remains `@needs-clarification`.
 
 For the two `@needs-clarification` scenarios:
 
@@ -159,8 +161,8 @@ Out-of-feature follow-ups (TC-09 accessibility, TC-10 telemetry) should be track
 
 ## Approval Recommendation
 
-**Approved with Changes.**
+**Approved with Changes** — pending M-1 and M-3 phrasing fixes on the next spec revision.
 
-- TC-01–TC-06 may proceed to automation as a smoke suite after the Medium-severity fixes are applied.
-- TC-07 and TC-08 remain `@needs-clarification` until their open questions are resolved; they should not be automated in this pass.
-- Apply the four Medium fixes before invoking `/convert-bdd-to-playwright`. The Low fixes are polish and can land in the same revision.
+- TC-01–TC-06 are implemented and 6/6 passing in `automation/tests/ui/test_standard_user_checkout.py` (8/8 with the framework-smoke tests). See `automation/reports/automation/standard_user_checkout_suite_implementation_report.md`.
+- M-2 and M-4 are Applied. M-1 is resolved in the implementation but not in the spec. M-3 does not affect code.
+- TC-07 and TC-08 remain `@needs-clarification` until their open questions are resolved.

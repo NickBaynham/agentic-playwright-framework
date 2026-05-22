@@ -156,7 +156,7 @@ Reports written:
 | Automated Test | Source Scenario | Source File |
 |---|---|---|
 | `tests/ui/test_standard_user_checkout.py::test_standard_user_logs_in_successfully` | TC-01 — Standard user logs in successfully | `specs/bdd/markdown/standard_user_checkout.md` |
-| `tests/ui/test_standard_user_checkout.py::test_adding_product_updates_cart_badge_and_toggles_button` | TC-02 — Adding one product updates the cart badge and toggles the Add button to Remove | `specs/bdd/markdown/standard_user_checkout.md` |
+| `tests/ui/test_standard_user_checkout.py::test_adding_product_updates_cart_badge_and_toggles_button` | TC-02 — Adding a product places it in the cart | `specs/bdd/markdown/standard_user_checkout.md` |
 | `tests/ui/test_standard_user_checkout.py::test_cart_lists_added_item_with_quantity_and_price` | TC-03 — Cart page lists the added item with the correct name, quantity, and price | `specs/bdd/markdown/standard_user_checkout.md` |
 | `tests/ui/test_standard_user_checkout.py::test_checkout_information_advances_to_overview_with_valid_input` | TC-04 — Checkout information form advances to the overview with valid input | `specs/bdd/markdown/standard_user_checkout.md` |
 | `tests/ui/test_standard_user_checkout.py::test_overview_totals_satisfy_item_total_plus_tax_equals_total` | TC-05 — Overview page totals satisfy Item total + Tax = Total | `specs/bdd/markdown/standard_user_checkout.md` |

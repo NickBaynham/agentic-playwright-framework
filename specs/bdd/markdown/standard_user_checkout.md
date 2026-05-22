@@ -87,12 +87,12 @@ These notes are optional implementation hints from exploration. They are not fin
 
 ---
 
-### Scenario: Adding one product updates the cart badge and toggles the Add button to Remove
+### Scenario: Adding a product places it in the cart
 
 **Scenario ID:** TC-02
 **Tags:** `@ui` `@smoke` `@cart` `@positive` `@automatable`
 **Automation Priority:** High
-**Priority Rationale:** Core add-to-cart behavior with deterministic observables.
+**Priority Rationale:** Core add-to-cart behavior with deterministic observables. Both Then assertions (badge count and button toggle) are direct, immediate consequences of the same single user action.
 
 #### Given
 
@@ -339,7 +339,7 @@ These notes are optional implementation hints from exploration. They are not fin
 
 #### Given
 
-- The standard user has just completed a checkout and is on the order confirmation page.
+- The standard user is on the order confirmation page after completing a checkout.
 
 #### When
 

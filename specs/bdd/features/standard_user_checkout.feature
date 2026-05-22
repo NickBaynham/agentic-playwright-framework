@@ -10,7 +10,7 @@ Feature: Standard User Checkout
     Then the user lands on the products page
 
   @ui @smoke @cart @positive @automatable
-  Scenario: Adding one product updates the cart badge and toggles the Add button to Remove
+  Scenario: Adding a product places it in the cart
     Given the standard user is logged in and viewing the inventory page
     When the user adds "Sauce Labs Backpack" to the cart from the inventory listing
     Then the cart badge shows 1
@@ -49,7 +49,7 @@ Feature: Standard User Checkout
 
   @ui @cart @positive @needs-clarification
   Scenario: Cart is empty after order completion
-    Given the standard user has just completed a checkout
+    Given the standard user is on the order confirmation page after completing a checkout
     When the user returns to the inventory page
     Then the cart badge is not displayed
 
