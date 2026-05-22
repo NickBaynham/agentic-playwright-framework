@@ -1,6 +1,6 @@
 ---
 description: Use Playwright MCP to explore a single bounded workflow on a live web application and produce a structured exploration session report. Does not generate BDD specs or automation code.
-argument-hint: <target-url> <workflow-scope>
+argument-hint: <target-url> <workflow-scope> [keep-browser-open]
 ---
 
 # /explore-workflow
@@ -23,6 +23,7 @@ Arguments: `$ARGUMENTS`
 10. If the session report grows beyond roughly 400 lines, split observations, anomalies, and test ideas into separate reports under `reports/exploration/<app-name>/`.
 11. Apply the Final Review Checklist from the skill before returning.
 12. Recommend using the `exploratory-to-bdd` skill (via the `/exploration-to-bdd` command) as the next step for the high-priority candidate test cases.
+13. After the session report is written and the Final Review Checklist passes, close the browser with `browser_close`. If the optional `keep-browser-open` flag is present anywhere in `$ARGUMENTS`, skip the close and record under Tooling Notes that the browser was intentionally left open at the user's request.
 
 ## Scope Guidance
 

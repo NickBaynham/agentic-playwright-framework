@@ -1,6 +1,6 @@
 ---
 description: Execute BDD scenarios manually through Playwright MCP and record an execution report. Does not generate automation code.
-argument-hint: <bdd-file-or-folder> <target-url>
+argument-hint: <bdd-file-or-folder> <target-url> [keep-browser-open]
 ---
 
 # /execute-bdd-mcp
@@ -24,6 +24,7 @@ Arguments: `$ARGUMENTS`
    - Any newly discovered Open Questions or Potential Defects.
 5. Do not generate Playwright or PyTest automation code.
 6. Do not modify the BDD spec unless explicitly asked. If issues are found, recommend they be addressed via `/review-bdd`.
+7. After the execution report is written, close the browser with `browser_close`. If the optional `keep-browser-open` flag is present anywhere in `$ARGUMENTS`, skip the close and note in the execution report that the browser was intentionally left open at the user's request.
 
 ## Output Summary
 

@@ -1,6 +1,6 @@
 ---
 description: Use Playwright MCP to perform bounded app reconnaissance on a live web application and produce a structured app reconnaissance report with candidate workflows for follow-up exploration.
-argument-hint: <target-url> <scope-or-goal>
+argument-hint: <target-url> <scope-or-goal> [keep-browser-open]
 ---
 
 # /explore-app
@@ -22,6 +22,7 @@ Arguments: `$ARGUMENTS`
 9. Under Recommended Next Step, list candidate workflows for follow-up `/explore-workflow` runs. Each candidate should be small enough to run on its own.
 10. Do not generate BDD specs.
 11. Do not generate Playwright or PyTest automation code.
+12. After the reconnaissance report is written, close the browser with `browser_close`. If the optional `keep-browser-open` flag is present anywhere in `$ARGUMENTS`, skip the close and record under Tooling Notes that the browser was intentionally left open at the user's request.
 
 ## Scope Guidance
 

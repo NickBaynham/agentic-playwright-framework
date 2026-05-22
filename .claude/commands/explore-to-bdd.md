@@ -1,6 +1,6 @@
 ---
 description: Explore an application with Playwright MCP and convert the session into BDD specs, traceability, automation candidates, and a quality review.
-argument-hint: <target-url> <scope-or-user-story>
+argument-hint: <target-url> <scope-or-user-story> [keep-browser-open]
 ---
 
 # /explore-to-bdd
@@ -22,6 +22,7 @@ Arguments: `$ARGUMENTS`
    - Automation candidate review → `specs/bdd/automation/<feature_name>_automation_candidates.md`
    - BDD quality review → `specs/bdd/reviews/<feature_name>_bdd_quality_review.md`
 6. Do not generate Playwright or PyTest automation code.
+7. After all BDD artifacts are written, close the browser with `browser_close`. If the optional `keep-browser-open` flag is present anywhere in `$ARGUMENTS`, skip the close and note in the BDD quality review that the browser was intentionally left open at the user's request.
 
 ## Scope Guidance
 
