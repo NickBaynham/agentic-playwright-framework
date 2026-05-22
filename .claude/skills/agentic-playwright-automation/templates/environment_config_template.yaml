@@ -1,0 +1,27 @@
+# Environment configuration template.
+#
+# Each environment defines base_url, api_url, browser, headless, and
+# test_data_path. Active environment is selected by the APP_ENV environment
+# variable (default: local). Tests and page objects receive values via the
+# `settings` fixture; do not read this file directly from tests.
+
+local:
+  base_url: https://www.saucedemo.com
+  api_url: https://www.saucedemo.com/api
+  browser: chromium
+  headless: false
+  test_data_path: test_data/local
+
+dev:
+  base_url: https://dev.example.com
+  api_url: https://dev.example.com/api
+  browser: chromium
+  headless: true
+  test_data_path: test_data/dev
+
+qa:
+  base_url: https://qa.example.com
+  api_url: https://qa.example.com/api
+  browser: chromium
+  headless: true
+  test_data_path: test_data/qa

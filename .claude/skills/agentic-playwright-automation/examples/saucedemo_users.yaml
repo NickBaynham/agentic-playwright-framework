@@ -1,0 +1,19 @@
+# SauceDemo user test data example.
+#
+# Public demo credentials published by saucedemo.com. Acceptable to commit
+# because the application itself displays them on its login page. Treat all
+# other credentials as secrets and load them from environment variables.
+
+users:
+  standard_user:
+    username: standard_user
+    password: secret_sauce
+    role: standard
+  problem_user:
+    username: problem_user
+    password: secret_sauce
+    role: problem
+  performance_glitch_user:
+    username: performance_glitch_user
+    password: secret_sauce
+    role: performance_glitch

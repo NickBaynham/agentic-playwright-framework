@@ -1,0 +1,28 @@
+# Test data template.
+#
+# Partition environment-specific values by environment folder under
+# automation/test_data/<environment>/. Do not commit private credentials,
+# tokens, or PII. Public demo credentials are acceptable when the
+# application publishes them.
+
+users:
+  standard_user:
+    username: standard_user
+    password: secret_sauce
+    role: standard
+  problem_user:
+    username: problem_user
+    password: secret_sauce
+    role: problem
+
+products:
+  - name: Sauce Labs Backpack
+    price: 29.99
+  - name: Sauce Labs Bike Light
+    price: 9.99
+
+checkout_customers:
+  default:
+    first_name: Test
+    last_name: User
+    postal_code: "12345"
