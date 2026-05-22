@@ -1,0 +1,26 @@
+# Environment configuration for the SauceDemo automation framework.
+#
+# The active environment is selected by APP_ENV (default: local). Tests and
+# page objects must receive these values via the `settings` fixture; do not
+# read this file directly from a test.
+
+local:
+  base_url: https://www.saucedemo.com
+  api_url: ""
+  browser: chromium
+  headless: false
+  test_data_path: test_data/local
+
+dev:
+  base_url: https://www.saucedemo.com
+  api_url: ""
+  browser: chromium
+  headless: true
+  test_data_path: test_data/dev
+
+qa:
+  base_url: https://www.saucedemo.com
+  api_url: ""
+  browser: chromium
+  headless: true
+  test_data_path: test_data/qa

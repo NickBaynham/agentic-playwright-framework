@@ -1,0 +1,26 @@
+# SauceDemo product catalog as observed during exploration.
+#
+# Source: sessions/mcp-exploration/saucedemo/standard-user-checkout-workflow_session.md
+# Prices are treated as constant for the demo. If a product is removed or its
+# price changes upstream, update this file and the affected tests in the same
+# change set.
+
+products:
+  sauce_labs_backpack:
+    name: Sauce Labs Backpack
+    price: "29.99"
+  sauce_labs_bike_light:
+    name: Sauce Labs Bike Light
+    price: "9.99"
+  sauce_labs_bolt_t_shirt:
+    name: Sauce Labs Bolt T-Shirt
+    price: "15.99"
+  sauce_labs_fleece_jacket:
+    name: Sauce Labs Fleece Jacket
+    price: "49.99"
+  sauce_labs_onesie:
+    name: Sauce Labs Onesie
+    price: "7.99"
+  test_all_the_things_t_shirt_red:
+    name: Test.allTheThings() T-Shirt (Red)
+    price: "15.99"

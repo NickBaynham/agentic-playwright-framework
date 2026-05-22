@@ -1,0 +1,19 @@
+# Generated report artifacts.
+reports/html/*
+reports/junit/*
+reports/traces/*
+reports/screenshots/*
+!reports/**/.gitkeep
+
+# Python tooling.
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# PDM.
+.pdm-python
+.venv/
+
+# Local environment overrides.
+.env

@@ -1,0 +1,47 @@
+[project]
+name = "saucedemo-automation"
+version = "0.1.0"
+description = "Python Playwright/PyTest automation for the SauceDemo storefront."
+authors = [{ name = "Agentic Playwright Framework" }]
+requires-python = ">=3.11,<3.13"
+readme = "README.md"
+
+dependencies = [
+    "playwright==1.49.1",
+    "pytest==8.3.4",
+    "pytest-playwright==0.6.2",
+    "pytest-html==4.1.1",
+    "pytest-xdist==3.6.1",
+    "pyyaml==6.0.2",
+    "python-dotenv==1.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff==0.8.6",
+    "mypy==1.14.1",
+    "types-pyyaml==6.0.12.20241230",
+]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+install-browsers = "playwright install --with-deps chromium"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+ignore_missing_imports = true

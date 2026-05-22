@@ -1,0 +1,11 @@
+# Canonical checkout customer data for the SauceDemo storefront.
+#
+# These are tester-generated identifiers, not PII. Format rules for the
+# postal code are an Open Question on the source BDD spec; tests assert
+# only that a non-empty value is accepted.
+
+checkout_customers:
+  default:
+    first_name: Test
+    last_name: User
+    postal_code: "12345"
