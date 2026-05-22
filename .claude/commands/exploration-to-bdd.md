@@ -25,6 +25,9 @@ Arguments: `$ARGUMENTS`
    - Automation candidate review at `specs/bdd/automation/<feature_name>_automation_candidates.md`
    - BDD quality review at `specs/bdd/reviews/<feature_name>_bdd_quality_review.md`
 4. If not sufficient, do not generate BDD artifacts. Instead, use the `mcp-exploratory-testing` skill to write an exploration review at `reports/exploration/<app-name>/<workflow-name>_review.md` describing the missing information and recommending a focused re-exploration.
+4a. Preserve any locator candidates from the source exploration as optional Automation Notes inside the Markdown BDD spec, and reference them in the traceability matrix using the Locator Candidate Reference column. Carry locator risks into the traceability and BDD quality review.
+4b. Do not insert raw selectors into Gherkin scenarios. Keep Gherkin behavior-focused.
+4c. Mark locator candidates as non-final; final locator decisions are made by the `agentic-playwright-automation` skill.
 5. Do not generate Playwright or PyTest automation code under any circumstances.
 
 ## Output Summary

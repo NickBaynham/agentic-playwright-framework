@@ -1,8 +1,8 @@
 # Traceability Matrix: <Feature Name>
 
-| Case ID | Feature | Scenario | Source Type | Source Reference | Observed Evidence | Expected Outcome | Automation Priority | Status | Notes |
-|---|---|---|---|---|---|---|---|---|---|
-| TC-001 | <Feature> | <Scenario name> | <User Story / Acceptance Criteria / MCP Session / Manual Notes / Bug Report> | <path or ticket> | <Observation> | <Expected outcome> | High / Medium / Low / Do Not Automate | Draft / Ready / Needs Review / Needs Clarification / Potential Defect / Automated / Do Not Automate | <Notes> |
+| Case ID | Feature | Scenario | Source Type | Source Reference | Observed Evidence | Expected Outcome | Locator Candidate Reference | Locator Risk | Automation Priority | Status | Notes |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| TC-001 | <Feature> | <Scenario name> | <User Story / Acceptance Criteria / MCP Session / Manual Notes / Bug Report> | <path or ticket> | <Observation> | <Expected outcome> | <Exploration locator candidate reference, e.g. exploration report path + element name> | <Risk note or "None"> | High / Medium / Low / Do Not Automate | Draft / Ready / Needs Review / Needs Clarification / Potential Defect / Automated / Do Not Automate | <Notes> |
 
 ## Status Legend
 

@@ -58,6 +58,18 @@
 
 - <Observation from MCP, browser, or session notes>
 
+#### Automation Notes
+
+These notes are optional implementation hints carried forward from exploration. They are not final automation decisions; the `agentic-playwright-automation` skill makes the final locator decision.
+
+| Element or Action | Locator Candidate | Confidence | Source | Notes |
+|---|---|---|---|---|
+
+#### Locator Risks
+
+- <Risk 1>
+- <Risk 2>
+
 #### Notes
 
 - <Additional context>
@@ -89,6 +101,15 @@
 |---|---|---|---|
 
 #### Observed Evidence
+
+- 
+
+#### Automation Notes
+
+| Element or Action | Locator Candidate | Confidence | Source | Notes |
+|---|---|---|---|---|
+
+#### Locator Risks
 
 - 
 

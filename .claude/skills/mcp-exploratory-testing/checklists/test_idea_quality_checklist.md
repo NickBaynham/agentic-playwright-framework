@@ -12,3 +12,5 @@ Apply to each candidate test idea. Each item should be Pass, Fail, or Needs Revi
 | Not duplicative of another candidate | | |
 | Suitable for BDD conversion if relevant | | |
 | Automation candidacy noted but not implemented | | |
+| Related locator candidates are referenced where useful | | |
+| Locator risk notes are referenced where useful | | |

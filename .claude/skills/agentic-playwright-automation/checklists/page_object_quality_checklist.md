@@ -12,3 +12,6 @@ Apply per page object class. Mark each item Pass, Fail, or Needs Review.
 | Locator strategy follows the priority order (role/name > label > placeholder > text > test id > stable CSS > XPath) | | |
 | No duplicate page objects exist for the same page | | |
 | Class design is simple and readable | | |
+| Page object uses final locator decisions, not raw unreviewed exploration candidates | | |
+| Repeated element locators are scoped or disambiguated (e.g., per-product data-test or card scoping) | | |
+| Dynamic or conditional element risks are addressed | | |

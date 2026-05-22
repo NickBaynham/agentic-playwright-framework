@@ -54,6 +54,24 @@ Implemented the standard-user login smoke test against `https://www.saucedemo.co
 | `LoginPage` | Authenticate a user. |
 | `InventoryPage` | Observe the products listing. |
 
+## Locator Decision Log
+
+| Page Object | Element | Candidate Locator | Final Locator | Decision | Rationale | Source |
+|---|---|---|---|---|---|---|
+| LoginPage | Username input | `page.get_by_placeholder("Username")` | `page.get_by_placeholder("Username")` | Accepted | Stable placeholder and unique field | SauceDemo exploration |
+| LoginPage | Password input | `page.get_by_placeholder("Password")` | `page.get_by_placeholder("Password")` | Accepted | Stable placeholder and unique field | SauceDemo exploration |
+| LoginPage | Login button | `page.get_by_role("button", name="Login")` | `page.get_by_role("button", name="Login")` | Accepted | Accessible role/name is clear | SauceDemo exploration |
+| InventoryPage | Products heading | `page.get_by_role("heading", name="Products")` | `page.get_by_role("heading", name="Products")` | Accepted | Stable accessible heading | SauceDemo exploration |
+| InventoryPage | Shopping cart link | `page.locator("[data-test='shopping-cart-link']")` | `page.locator("[data-test='shopping-cart-link']")` | Accepted | Icon-only element; data-test is stable | SauceDemo exploration |
+| InventoryPage | Cart badge | `page.locator("[data-test='shopping-cart-badge']")` | `page.locator("[data-test='shopping-cart-badge']")` | Accepted with Scope | Conditional element; assertions must tolerate hidden state | SauceDemo exploration |
+
+## Locator Risks Carried Forward
+
+| Page Object | Element | Risk | Mitigation |
+|---|---|---|---|
+| InventoryPage | Cart badge | Element renders only after items are in cart | Use `expect(...).to_be_hidden()` / `to_be_visible()` per scenario state |
+| InventoryPage | Shopping cart link | Anchor has no accessible name | Use `data-test` rather than role/name |
+
 ## Commands Run
 
 | Command | Result |

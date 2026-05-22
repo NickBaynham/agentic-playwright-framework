@@ -99,6 +99,14 @@ Reports:
 27. Prefer small, reviewable changes.
 28. Do not introduce Cucumber/Behave unless explicitly requested.
 29. Treat BDD specs as source-of-truth behavior contracts, not necessarily executable Gherkin runtime files.
+30. Use locator candidates from exploration artifacts and Markdown BDD Automation Notes as evidence during page object generation.
+31. Review locator candidates against the project locator strategy before selecting final locators.
+32. Select final locators using the locator strategy plus practical stability rules.
+33. Document final locator decisions in the implementation report.
+34. Explain when an exploration locator candidate is accepted, modified, scoped, or rejected.
+35. Prefer scoped locators for repeated elements.
+36. Prefer stable data-test attributes when they disambiguate repeated controls or icon-only elements.
+37. Preserve traceability from the final page object locator back to the exploration candidate when possible.
 
 ## Required Automation Framework Structure
 
@@ -234,12 +242,39 @@ Locator priority, highest first:
 
 Locators should reflect user behavior. If only XPath works, that often indicates a missing accessible name or test id; record it as an Open Question in the implementation report.
 
+## Locator Candidate Review and Final Locator Decision Rules
+
+When generating page objects:
+
+1. Read locator candidates from exploration reports (under `sessions/mcp-exploration/`), Markdown BDD Automation Notes (under `specs/bdd/markdown/`), and traceability files (under `specs/bdd/traceability/`).
+2. Compare each candidate against the project locator strategy.
+3. Check for repeated elements, dynamic elements, and ambiguity.
+4. Select final locators for page object implementation.
+5. Document the decision for each element in the implementation report's Locator Decision Log.
+
+Decision values:
+
+- **Accepted** — exploration candidate used as-is.
+- **Accepted with Scope** — exploration candidate adopted, with additional scoping (e.g., locate inside a product card).
+- **Modified** — exploration candidate adjusted (e.g., different role name, switched from text to data-test).
+- **Rejected** — exploration candidate not used; alternative selected.
+- **Needs Review** — locator decision deferred pending clarification or additional evidence.
+
+Decision table format:
+
+| Page Object | Element | Candidate Locator | Final Locator | Decision | Rationale | Source |
+|---|---|---|---|---|---|---|
+
+Final locators should be implemented only after review against framework standards. Page objects must use the final locator decisions, not raw unreviewed exploration candidates.
+
+When an exploration locator candidate is rejected, the implementation report should also explain the replacement.
+
 ## Reporting Rules
 
 - Configure PyTest HTML report output to `automation/reports/html/`.
 - Configure JUnit XML output to `automation/reports/junit/`.
 - Store Playwright traces under `automation/reports/traces/` and screenshots under `automation/reports/screenshots/` when failures occur.
-- Implementation reports go to `automation/reports/automation/<feature>_<scenario>_implementation_report.md`.
+- Implementation reports go to `automation/reports/automation/<feature>_<scenario>_implementation_report.md`. They must include a Locator Decision Log when locator candidates were available from exploration or BDD artifacts.
 - Suite implementation reports go to `automation/reports/automation/<feature>_suite_implementation_report.md`.
 - Failure investigation reports go to `automation/reports/automation/failures/<failure_name>_investigation.md`.
 - Automation review reports go to `automation/reports/automation/reviews/<target>_automation_review.md`.
@@ -369,3 +404,6 @@ Before returning generated automation:
 - No Cucumber/Behave artifacts were introduced.
 - No secrets were committed.
 - No automatic commits, pushes, or pull requests were performed unless explicitly authorized.
+- When exploration or BDD artifacts provided locator candidates, the implementation report contains a Locator Decision Log recording the final locator and decision for each element.
+- Repeated element locators are scoped or disambiguated; dynamic element risks are documented.
+- Page objects use final locator decisions, not raw unreviewed exploration candidates.

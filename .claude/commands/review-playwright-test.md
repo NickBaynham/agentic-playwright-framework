@@ -19,8 +19,12 @@ Arguments: `$ARGUMENTS`
    - `checklists/fixture_quality_checklist.md`
    - `checklists/test_data_quality_checklist.md`
    - `checklists/locator_quality_checklist.md`
+   - `checklists/locator_decision_checklist.md`
    - `checklists/agent_safety_checklist.md`
 4. Identify: hidden assertions, hard-coded data, brittle locators, duplicated code, over-engineered abstractions, fixture confusion, missing traceability, missing markers.
+4a. Review whether final locators align with locator candidate evidence (when available) and the project locator strategy.
+4b. Verify repeated/dynamic elements are scoped or disambiguated.
+4c. Verify the implementation report includes a Locator Decision Log when locator candidates were available.
 5. Write an automation review report at `automation/reports/automation/reviews/<target>_automation_review.md` using `templates/automation_review_template.md`.
 6. End with an Approval Recommendation: Approved, Approved with Changes, or Needs Rework.
 7. Do not modify code unless the user explicitly asks for fixes in this command invocation.

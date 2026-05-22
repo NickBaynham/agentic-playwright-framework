@@ -19,7 +19,11 @@ Arguments: `$ARGUMENTS`
    - `checklists/observation_quality_checklist.md`
    - `checklists/anomaly_classification_checklist.md`
    - `checklists/test_idea_quality_checklist.md`
+   - `checklists/locator_candidate_checklist.md`
 5. Identify gaps, ambiguity, missing data, missing outcomes, missing anomalies, weak evidence, conflated application and tooling anomalies, and candidate test cases without observable expected results.
+5a. Review whether locator candidates were captured for meaningful workflow elements.
+5b. Review whether locator confidence, rationale, repeated-element notes, and dynamic-element risks were documented.
+5c. Confirm that locator candidates are clearly marked as non-final (not as final automation locators).
 6. Write or update the review file at `reports/exploration/<app-name>/<workflow-name>_review.md`. Create directories as needed.
 7. Do not generate BDD specs unless the user explicitly asks.
 8. Do not generate Playwright or PyTest automation code.

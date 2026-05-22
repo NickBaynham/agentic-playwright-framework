@@ -38,6 +38,18 @@
 | Page Object | Purpose |
 |---|---|
 
+## Locator Decision Log
+
+Records how locator candidates from exploration and BDD artifacts were reviewed and converted into final page object locators. Decision values: Accepted, Accepted with Scope, Modified, Rejected, Needs Review.
+
+| Page Object | Element | Candidate Locator | Final Locator | Decision | Rationale | Source |
+|---|---|---|---|---|---|---|
+
+## Locator Risks Carried Forward
+
+| Page Object | Element | Risk | Mitigation |
+|---|---|---|---|
+
 ## Commands Run
 
 | Command | Result |

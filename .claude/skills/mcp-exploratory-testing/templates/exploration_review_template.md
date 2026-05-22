@@ -17,6 +17,10 @@
 | Tooling issues were separated from app issues | Pass/Fail/Needs Review |  |
 | Candidate test ideas were identified | Pass/Fail/Needs Review |  |
 | Open questions were captured | Pass/Fail/Needs Review |  |
+| Locator candidates were captured | Pass/Fail/Needs Review |  |
+| Locator confidence and rationale were included | Pass/Fail/Needs Review |  |
+| Repeated or dynamic element risks were documented | Pass/Fail/Needs Review |  |
+| Locator candidates were not treated as final implementation | Pass/Fail/Needs Review |  |
 
 ## Gaps
 

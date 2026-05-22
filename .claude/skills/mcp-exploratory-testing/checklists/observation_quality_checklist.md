@@ -14,3 +14,7 @@ Apply to a completed session report or page observation. Each item should be Pas
 | Evidence references are included (snapshot file, screenshot, console excerpt, network request) | | |
 | Assumptions are listed | | |
 | Open questions are listed | | |
+| Locator candidates were captured for meaningful workflow elements | | |
+| Each locator candidate has confidence and rationale | | |
+| Repeated or dynamic element risks are documented | | |
+| Locator candidates are marked as non-final | | |

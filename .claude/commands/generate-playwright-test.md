@@ -18,6 +18,9 @@ Arguments: `$ARGUMENTS`
 5. Produce the smallest implementation plan that covers the selected scenario.
 6. Reuse existing patterns before creating new ones. If a new page object, component, or fixture is required, justify it in the implementation report.
 7. Generate or update: test file under `automation/tests/ui/` or `automation/tests/api/`, page object(s) under `automation/framework/pages/`, component(s) under `automation/framework/components/` if needed, fixtures in the appropriate `conftest.py`, data models under `automation/framework/models/`, test data under `automation/test_data/<environment>/`.
+7a. Read locator candidates from the source exploration report (if any) and the Markdown BDD Automation Notes; compare against the project locator strategy and select final locators.
+7b. Record a Locator Decision Log in the implementation report (Accepted, Accepted with Scope, Modified, Rejected, Needs Review) with rationale and source.
+7c. Use final locator decisions in page objects, not raw unreviewed candidates. Scope repeated-element locators; document dynamic/conditional element risks.
 8. Keep business assertions at the top level of the test using Playwright `expect`. Do not hide assertions inside page objects.
 9. Include traceability in the test docstring (source BDD path, scenario name, Scenario ID, or user story ID).
 10. Run the new test only if the user authorizes execution. Run related tests in the same folder if practical and authorized.

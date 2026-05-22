@@ -22,6 +22,9 @@
 | No duplicate or overlapping scenarios | Pass / Fail / Needs Review |  |
 | No overly broad scenarios | Pass / Fail / Needs Review |  |
 | No overly vague scenarios | Pass / Fail / Needs Review |  |
+| Gherkin avoids raw implementation selectors | Pass / Fail / Needs Review |  |
+| Markdown spec preserves useful locator candidates as automation notes | Pass / Fail / Needs Review |  |
+| Locator risks are preserved where relevant | Pass / Fail / Needs Review |  |
 
 ## Issues Found
 

@@ -17,6 +17,9 @@ Arguments: `$ARGUMENTS`
 4. Inspect the existing automation framework.
 5. Produce an implementation plan listing each selected scenario, the reusable assets to use, and any new assets to introduce.
 6. Generate tests one at a time. After each generated test, run it in isolation if execution is authorized. Do not proceed to the next test if the prior test is failing without an investigation.
+6a. Read locator candidates from exploration reports, Markdown BDD Automation Notes, and traceability files; compare against the project locator strategy.
+6b. Record a Locator Decision Log per scenario (and a consolidated section in the suite report) with decisions Accepted, Accepted with Scope, Modified, Rejected, or Needs Review, plus rationale and source.
+6c. Use final locator decisions in page objects; scope repeated-element locators; document dynamic/conditional element risks.
 7. Reuse existing page objects, components, fixtures, models, and data. Avoid duplication.
 8. Run the related suite when authorized after the last test is generated.
 9. Do not perform any git commit, push, or pull request.

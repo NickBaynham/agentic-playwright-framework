@@ -681,6 +681,31 @@ Use locators that reflect user-visible behavior where possible.
 
 ⸻
 
+Locator Candidate Handoff
+
+During MCP exploration, Claude Code captures locator candidates for meaningful elements (fields, buttons, links, headings, menus, product cards, cart badges, validation and confirmation messages, repeated/dynamic controls). These candidates are stored in the exploration session reports under `sessions/mcp-exploration/` as evidence for later automation.
+
+Locator candidates are not final implementation decisions.
+
+The BDD layer may preserve locator hints in Markdown Automation Notes (and reference them in the traceability matrix), but Gherkin scenarios remain behavior-focused and selector-free.
+
+During Playwright automation generation, Claude reviews locator candidates, selects final locators using the framework locator strategy and practical stability rules, and documents the outcome in a Locator Decision Log inside the implementation report. Decisions are recorded as Accepted, Accepted with Scope, Modified, Rejected, or Needs Review, with rationale and source.
+
+The handoff flow:
+
+```
+MCP Exploration -> locator candidates (evidence)
+       |
+       v
+Markdown BDD spec -> Automation Notes (optional hints)
+                  -> Traceability Matrix (Locator Candidate Reference)
+       |
+       v
+Playwright/PyTest implementation -> Locator Decision Log (final decisions)
+```
+
+⸻
+
 Reporting
 
 The project produces several types of reports.

@@ -52,6 +52,23 @@
 - <Assertion idea 1>
 - <Assertion idea 2>
 
+#### Locator Candidates
+
+These are exploration evidence, not final implementation decisions.
+
+| Element | Type | Role | Accessible Name / Text | Placeholder / Label | Test ID / Data Attribute | Candidate Locator | Confidence | Rationale | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+
+#### Locator Risks
+
+- <Risk 1>
+- <Risk 2>
+
+#### Repeated or Dynamic Elements
+
+| Element Group | Locator Challenge | Suggested Strategy | Notes |
+|---|---|---|---|
+
 #### Notes
 
 - <Notes>
@@ -108,6 +125,33 @@
 ## Tooling Notes
 
 - <Playwright MCP issue, fallback, or limitation>
+
+## Automation Handoff Notes
+
+These notes summarize the locator and page-model evidence carried forward into the BDD and automation phases. They are not final implementation decisions.
+
+### Recommended Page Models
+
+- <PageModelName>
+
+### Locator Candidates to Review
+
+| Page | Element | Candidate Locator | Confidence | Notes |
+|---|---|---|---|---|
+
+### Locator Risks
+
+- <Risk 1>
+- <Risk 2>
+
+### Data Dependencies for Locators
+
+| Element or Action | Data Dependency | Notes |
+|---|---|---|
+
+### Tooling Interaction Notes
+
+- <Tooling note, such as MCP click fallback>
 
 ## Recommended Next Step
 

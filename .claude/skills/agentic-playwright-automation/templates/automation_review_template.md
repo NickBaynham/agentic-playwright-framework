@@ -17,6 +17,10 @@
 | Test data is externalized | Pass/Fail/Needs Review |  |
 | Traceability is preserved | Pass/Fail/Needs Review |  |
 | Related tests were run | Pass/Fail/Needs Review |  |
+| Locator candidates were reviewed | Pass/Fail/Needs Review |  |
+| Final locator decisions were documented | Pass/Fail/Needs Review |  |
+| Repeated element locators are scoped or disambiguated | Pass/Fail/Needs Review |  |
+| Dynamic element locator risks are addressed | Pass/Fail/Needs Review |  |
 
 ## Issues Found
 

@@ -20,6 +20,9 @@ Arguments: `$ARGUMENTS`
    - Automation candidate review → `specs/bdd/automation/<feature_name>_automation_candidates.md`
    - BDD quality review → `specs/bdd/reviews/<feature_name>_bdd_quality_review.md`
 4. Preserve traceability back to the source in the matrix.
+4a. If the source includes locator candidates (e.g., from an MCP exploration), preserve them in the Markdown BDD spec under Automation Notes, and reference them in the traceability matrix's Locator Candidate Reference column. Carry locator risks forward.
+4b. Do not insert raw selectors into Gherkin scenarios; Gherkin remains behavior-focused.
+4c. Mark locator candidates as non-final.
 5. Surface Open Questions and Potential Defects rather than guessing.
 6. Do not generate Playwright or PyTest automation code.
 

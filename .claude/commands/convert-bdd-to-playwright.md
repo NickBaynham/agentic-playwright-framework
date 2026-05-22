@@ -16,6 +16,9 @@ Arguments: `$ARGUMENTS`
 3. Read the traceability matrix in `specs/bdd/traceability/` and the automation candidate review in `specs/bdd/automation/` if available.
 4. Implement only scenarios that are all of: `High` priority, marked `@automatable`, not marked `@needs-clarification`, not marked `Do Not Automate`.
 5. Generate or update: tests under `automation/tests/`, page objects under `automation/framework/pages/`, components under `automation/framework/components/` if needed, data models under `automation/framework/models/`, test data under `automation/test_data/<environment>/`, fixtures in the appropriate `conftest.py`.
+5a. Read locator candidates from any of: source exploration reports under `sessions/mcp-exploration/`, Markdown BDD Automation Notes under `specs/bdd/markdown/`, and traceability matrices under `specs/bdd/traceability/`.
+5b. Produce a Locator Decision Log per scenario in the implementation report. Record final locators with one of: Accepted, Accepted with Scope, Modified, Rejected, Needs Review, plus rationale and source.
+5c. Page objects must use final locator decisions, not raw unreviewed exploration candidates. Scope repeated-element locators or use stable `data-test` attributes; document dynamic/conditional element risks.
 6. Keep business assertions at the top level of the test using Playwright `expect`.
 7. Preserve source traceability in every test docstring: BDD spec path, scenario name, Scenario ID.
 8. Run generated tests when execution is authorized.

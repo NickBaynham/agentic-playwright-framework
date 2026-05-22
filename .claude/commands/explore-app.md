@@ -20,6 +20,8 @@ Arguments: `$ARGUMENTS`
 7. Avoid destructive actions (delete, cancel, reset shared state, payment submission) unless the user explicitly authorizes them for this session.
 8. Produce an app reconnaissance report at `sessions/mcp-exploration/<app-name>/app_reconnaissance_session.md`, using the exploration session template.
 9. Under Recommended Next Step, list candidate workflows for follow-up `/explore-workflow` runs. Each candidate should be small enough to run on its own.
+9a. Capture locator candidates for primary navigation, key forms, menus, and workflow-critical controls observed during reconnaissance. Do not attempt an exhaustive locator inventory across the entire application unless the user explicitly requests it.
+9b. Populate Automation Handoff Notes with the locator candidates collected, locator risks, and any tooling interaction notes.
 10. Do not generate BDD specs.
 11. Do not generate Playwright or PyTest automation code.
 12. After the reconnaissance report is written, close the browser with `browser_close`. If the optional `keep-browser-open` flag is present anywhere in `$ARGUMENTS`, skip the close and record under Tooling Notes that the browser was intentionally left open at the user's request.

@@ -76,6 +76,25 @@ A single-item happy-path checkout performed by the `standard_user` account:
 - Page title or heading on the inventory page shows "Products".
 - An incorrect login keeps the user on `/` and surfaces an error banner (not exercised here; candidate for follow-up).
 
+#### Locator Candidates
+
+| Element | Type | Role | Accessible Name / Text | Placeholder / Label | Test ID / Data Attribute | Candidate Locator | Confidence | Rationale | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| Username input | input | textbox | Username | Username | `user-name` | `page.get_by_placeholder("Username")` | High | Stable placeholder observed | Alternative: `[data-test='username']` |
+| Password input | input | textbox | Password | Password | `password` | `page.get_by_placeholder("Password")` | High | Stable placeholder observed | Alternative: `[data-test='password']` |
+| Login button | button | button | Login |  | `login-button` | `page.get_by_role("button", name="Login")` | High | Accessible role/name is clear | Alternative: `[data-test='login-button']` |
+| Error banner | message |  | (varies)  |  | `error` | `page.locator("[data-test='error']")` | Medium | Conditional element; only on validation error | Not observed in this session |
+
+#### Locator Risks
+
+- Error banner is conditional; locator must tolerate absence on the happy path.
+
+#### Repeated or Dynamic Elements
+
+| Element Group | Locator Challenge | Suggested Strategy | Notes |
+|---|---|---|---|
+| (none) |  |  | Login page has unique controls. |
+
 #### Notes
 
 - Credentials are published in plain text on the page itself; this is a known property of the demo app.
@@ -105,6 +124,29 @@ A single-item happy-path checkout performed by the `standard_user` account:
 - Cart badge increments to `1` after adding the first item.
 - Six product cards are present on first load.
 
+#### Locator Candidates
+
+| Element | Type | Role | Accessible Name / Text | Placeholder / Label | Test ID / Data Attribute | Candidate Locator | Confidence | Rationale | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| Products heading | heading | heading | Products |  |  | `page.get_by_role("heading", name="Products")` | High | Stable accessible heading | |
+| Shopping cart link | link | link | cart (icon-only) |  | `shopping-cart-link` | `page.locator("[data-test='shopping-cart-link']")` | High | Icon-only element; data-test is stable | No accessible name observed on the link itself |
+| Cart badge | badge |  | 1 |  | `shopping-cart-badge` | `page.locator("[data-test='shopping-cart-badge']")` | High | Conditional state indicator | Only visible after cart has items |
+| Backpack Add to cart | button | button | Add to cart |  | `add-to-cart-sauce-labs-backpack` | `page.locator("[data-test='add-to-cart-sauce-labs-backpack']")` | High | Disambiguates repeated Add to cart buttons | Good page object candidate |
+| Backpack Remove | button | button | Remove |  | `remove-sauce-labs-backpack` | `page.locator("[data-test='remove-sauce-labs-backpack']")` | High | Conditional; only present after Add | Toggles from Add button |
+| Burger menu button | button | button | Open Menu |  | `open-menu` | `page.get_by_role("button", name="Open Menu")` | Medium | Accessible name present | |
+
+#### Locator Risks
+
+- Multiple Add to cart buttons share the same visible text; a naïve text locator will match the wrong product.
+- Cart badge appears only after the cart has items; assertions must handle both visible and hidden states.
+
+#### Repeated or Dynamic Elements
+
+| Element Group | Locator Challenge | Suggested Strategy | Notes |
+|---|---|---|---|
+| Inventory product cards | Multiple Add to cart buttons have similar text | Use product-specific `data-test` or locate product card by product name and scope button lookup | Avoid first-match global Add to cart locator |
+| Cart badge | Appears only after cart has items | Assert visible after add; assert hidden after remove/reset | Conditional locator |
+
 #### Notes
 
 - Product count is six on this demo as of the session date.
@@ -131,6 +173,25 @@ A single-item happy-path checkout performed by the `standard_user` account:
 
 - Cart page shows previously added Sauce Labs Backpack.
 - Quantity column shows `1` for the added item.
+
+#### Locator Candidates
+
+| Element | Type | Role | Accessible Name / Text | Placeholder / Label | Test ID / Data Attribute | Candidate Locator | Confidence | Rationale | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| Your Cart heading | heading | heading | Your Cart |  |  | `page.get_by_role("heading", name="Your Cart")` | High | Stable accessible heading | |
+| Continue Shopping button | button | button | Continue Shopping |  | `continue-shopping` | `page.get_by_role("button", name="Continue Shopping")` | High | Accessible role/name | |
+| Checkout button | button | button | Checkout |  | `checkout` | `page.get_by_role("button", name="Checkout")` | High | Accessible role/name | Alternative: `[data-test='checkout']` |
+| Cart line item (Backpack) | row |  | Sauce Labs Backpack |  | `inventory-item` (repeats) | `page.locator(".cart_item").filter(has_text="Sauce Labs Backpack")` | Medium | Scoped by product name | Repeated element group |
+
+#### Locator Risks
+
+- Cart line items repeat; locators must scope by product name or per-row test ID.
+
+#### Repeated or Dynamic Elements
+
+| Element Group | Locator Challenge | Suggested Strategy | Notes |
+|---|---|---|---|
+| Cart line items | Each item has its own row | Filter row container by product name; resolve actions inside the row | |
 
 #### Notes
 
@@ -159,6 +220,26 @@ A single-item happy-path checkout performed by the `standard_user` account:
 
 - Submitting with all three fields populated proceeds to `/checkout-step-two.html`.
 - Submitting with any field empty surfaces a field-specific error (candidate negative test; not exercised here).
+
+#### Locator Candidates
+
+| Element | Type | Role | Accessible Name / Text | Placeholder / Label | Test ID / Data Attribute | Candidate Locator | Confidence | Rationale | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| First Name input | input | textbox | First Name | First Name | `firstName` | `page.get_by_placeholder("First Name")` | High | Stable placeholder | Alternative: `[data-test='firstName']` |
+| Last Name input | input | textbox | Last Name | Last Name | `lastName` | `page.get_by_placeholder("Last Name")` | High | Stable placeholder | Alternative: `[data-test='lastName']` |
+| Postal Code input | input | textbox | Zip/Postal Code | Zip/Postal Code | `postalCode` | `page.get_by_placeholder("Zip/Postal Code")` | High | Stable placeholder | Alternative: `[data-test='postalCode']` |
+| Continue button | button | button | Continue |  | `continue` | `page.get_by_role("button", name="Continue")` | High | Accessible role/name | Alternative: `[data-test='continue']` |
+| Cancel button | button | button | Cancel |  | `cancel` | `page.get_by_role("button", name="Cancel")` | High | Accessible role/name | |
+
+#### Locator Risks
+
+- Field-specific error elements were not exercised; their locators are undocumented from this session.
+
+#### Repeated or Dynamic Elements
+
+| Element Group | Locator Challenge | Suggested Strategy | Notes |
+|---|---|---|---|
+| (none) |  |  | Single-instance form. |
 
 #### Notes
 
@@ -189,6 +270,26 @@ A single-item happy-path checkout performed by the `standard_user` account:
 - Total reflects Item total plus Tax.
 - Finish navigates to `/checkout-complete.html`.
 
+#### Locator Candidates
+
+| Element | Type | Role | Accessible Name / Text | Placeholder / Label | Test ID / Data Attribute | Candidate Locator | Confidence | Rationale | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| Item total label | text |  | Item total: $... |  | `subtotal-label` | `page.locator("[data-test='subtotal-label']")` | High | Stable data-test for a computed value | |
+| Tax label | text |  | Tax: $... |  | `tax-label` | `page.locator("[data-test='tax-label']")` | High | Stable data-test for a computed value | |
+| Total label | text |  | Total: $... |  | `total-label` | `page.locator("[data-test='total-label']")` | High | Stable data-test for a computed value | |
+| Finish button | button | button | Finish |  | `finish` | `page.get_by_role("button", name="Finish")` | High | Accessible role/name | Alternative: `[data-test='finish']` |
+| Cancel button | button | button | Cancel |  | `cancel` | `page.get_by_role("button", name="Cancel")` | High | Accessible role/name | |
+
+#### Locator Risks
+
+- Totals contain dynamic numeric values; assertions should parse text rather than match exact strings unless price is fixed.
+
+#### Repeated or Dynamic Elements
+
+| Element Group | Locator Challenge | Suggested Strategy | Notes |
+|---|---|---|---|
+| Overview line items | Repeats per cart item | Scope by product name as in cart page | |
+
 #### Notes
 
 - Tax appears to be calculated by the application; the exact formula is not documented in this exploration.
@@ -212,6 +313,24 @@ A single-item happy-path checkout performed by the `standard_user` account:
 
 - Confirmation page displays "Thank you for your order!".
 - Back Home returns to `/inventory.html`.
+
+#### Locator Candidates
+
+| Element | Type | Role | Accessible Name / Text | Placeholder / Label | Test ID / Data Attribute | Candidate Locator | Confidence | Rationale | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| Complete header | heading | heading | Checkout: Complete! |  | `complete-header` | `page.get_by_role("heading", name="Thank you for your order!")` | High | Accessible heading | Primary success oracle |
+| Thank-you message | text |  | Thank you for your order! |  | `complete-text` | `page.get_by_text("Thank you for your order!")` | High | Stable success message | |
+| Back Home button | button | button | Back Home |  | `back-to-products` | `page.get_by_role("button", name="Back Home")` | High | Accessible role/name | Alternative: `[data-test='back-to-products']` |
+
+#### Locator Risks
+
+- (none observed)
+
+#### Repeated or Dynamic Elements
+
+| Element Group | Locator Challenge | Suggested Strategy | Notes |
+|---|---|---|---|
+| (none) |  |  | Single-instance confirmation page. |
 
 #### Notes
 
@@ -394,6 +513,52 @@ A single-item happy-path checkout performed by the `standard_user` account:
 
 - One MCP `browser_click` on the Finish button returned success without firing the React handler. Worked around with `browser_evaluate` issuing a DOM `.click()`. See anomaly A-002. Downstream automation should not rely on the workaround without an explicit reason.
 - Snapshots were the primary observation mechanism; screenshots were not required.
+
+## Automation Handoff Notes
+
+These notes summarize locator and page-model evidence for the BDD and automation phases. They are not final implementation decisions.
+
+### Recommended Page Models
+
+- `LoginPage`
+- `InventoryPage`
+- `CartPage`
+- `CheckoutInformationPage`
+- `CheckoutOverviewPage`
+- `OrderConfirmationPage`
+
+### Locator Candidates to Review
+
+| Page | Element | Candidate Locator | Confidence | Notes |
+|---|---|---|---|---|
+| LoginPage | Username input | `page.get_by_placeholder("Username")` | High | Or `[data-test='username']` |
+| LoginPage | Password input | `page.get_by_placeholder("Password")` | High | Or `[data-test='password']` |
+| LoginPage | Login button | `page.get_by_role("button", name="Login")` | High | Or `[data-test='login-button']` |
+| InventoryPage | Shopping cart link | `page.locator("[data-test='shopping-cart-link']")` | High | Icon-only |
+| InventoryPage | Cart badge | `page.locator("[data-test='shopping-cart-badge']")` | High | Conditional |
+| InventoryPage | Backpack Add to cart | `page.locator("[data-test='add-to-cart-sauce-labs-backpack']")` | High | Disambiguates repeated buttons |
+| CartPage | Checkout button | `page.get_by_role("button", name="Checkout")` | High | |
+| CheckoutInformationPage | First/Last Name, Postal Code | `page.get_by_placeholder(...)` | High | Stable placeholders |
+| CheckoutOverviewPage | Finish button | `page.get_by_role("button", name="Finish")` | High | Tooling note: see A-002 |
+| OrderConfirmationPage | Thank-you message | `page.get_by_text("Thank you for your order!")` | High | Success oracle |
+
+### Locator Risks
+
+- Multiple Add to cart buttons share visible text — prefer per-product `data-test` or scope by product card.
+- Cart badge is conditional — assertions must handle visible and hidden states.
+- Reset App State (A-001) may leave stale button text — locator alone cannot detect this; assertions must verify state.
+
+### Data Dependencies for Locators
+
+| Element or Action | Data Dependency | Notes |
+|---|---|---|
+| Per-product Add to cart | Product slug (e.g., `sauce-labs-backpack`) | Used inside `data-test` |
+| Per-product Remove | Product slug | Same as above |
+| Cart line item row | Product display name | Used to scope row lookups |
+
+### Tooling Interaction Notes
+
+- `browser_click` on `Finish` proved unreliable in one session; DOM `.click()` fallback via `browser_evaluate` worked. Downstream automation should rely on Playwright's stable click API and avoid replicating the fallback unless a similar problem reappears with evidence.
 
 ## Recommended Next Step
 

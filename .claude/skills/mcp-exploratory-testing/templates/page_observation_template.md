@@ -37,6 +37,22 @@
 - <Test idea 1>
 - <Test idea 2>
 
+## Locator Candidates
+
+Exploration evidence. Not final automation implementation.
+
+| Element | Type | Role | Accessible Name / Text | Placeholder / Label | Test ID / Data Attribute | Candidate Locator | Confidence | Rationale | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+
+## Locator Risks
+
+- <Risk 1>
+
+## Repeated or Dynamic Elements
+
+| Element Group | Locator Challenge | Suggested Strategy | Notes |
+|---|---|---|---|
+
 ## Open Questions
 
 - <Question 1>

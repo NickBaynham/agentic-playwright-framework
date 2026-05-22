@@ -60,6 +60,11 @@ Do not use this skill to generate Playwright or PyTest automation code; that is 
 13. Do not generate step definitions in this skill version.
 14. Do not introduce Cucumber/Behave runtime setup in this skill version.
 15. Keep BDD specs useful for product, QA, engineering, and automation review.
+16. Preserve locator candidate references from exploration artifacts as optional automation notes in Markdown BDD specs.
+17. Do not include raw selectors in Gherkin steps unless the user explicitly requests it.
+18. Keep Gherkin behavior-focused and implementation-neutral.
+19. Include locator candidates in traceability or automation notes when they are useful for later automation.
+20. Do not treat locator candidates as final automation locators.
 
 ## Required Output Structure
 
@@ -138,6 +143,23 @@ Create the directories if they do not already exist. Use `snake_case` for featur
 - File the review under `specs/bdd/reviews/<feature_name>_bdd_quality_review.md`.
 - End with an Approval Recommendation: Approved, Approved with Changes, or Needs Rework.
 
+## Locator Candidate Handoff Rules
+
+When source exploration artifacts include locator candidates:
+
+1. Preserve them in Markdown BDD specs under an Automation Notes section attached to the relevant scenario or feature.
+2. Reference them in the traceability matrix using the Locator Candidate Reference column when useful.
+3. Do not place selectors directly inside Gherkin steps. Gherkin remains behavior-only.
+4. Mark locator candidates as non-final — the `agentic-playwright-automation` skill makes the final locator decision.
+5. Preserve locator risks and repeated/dynamic element notes alongside the candidates.
+6. Carry forward open questions about unstable or ambiguous locators.
+
+The rule of separation:
+
+- **Gherkin** = behavior only.
+- **Markdown BDD** = behavior plus optional Automation Notes.
+- **Traceability** = source evidence, including locator candidate references when useful.
+
 ## Workflow: Exploration Notes to BDD
 
 1. Read the exploration source (Markdown notes, MCP transcript, manual session log).
@@ -207,3 +229,6 @@ Before returning generated artifacts:
 - BDD quality review is filed with an Approval Recommendation.
 - Open questions and potential defects are surfaced, not silently resolved.
 - No Playwright or PyTest automation code is included.
+- Gherkin remains selector-free.
+- Where source exploration provided locator candidates, the Markdown spec preserves them as Automation Notes and the traceability matrix references them.
+- Locator risks are preserved where relevant.

@@ -62,6 +62,22 @@ A standard user can sign in to the SauceDemo storefront and reach the product ca
 - After clicking Login, the URL advanced to `https://www.saucedemo.com/inventory.html`.
 - The page snapshot showed the Products heading and a shopping cart link with no badge.
 
+#### Automation Notes
+
+These notes are optional implementation hints carried forward from exploration. They are not final automation decisions.
+
+| Element or Action | Locator Candidate | Confidence | Source | Notes |
+|---|---|---|---|---|
+| Username input | `page.get_by_placeholder("Username")` | High | saucedemo_checkout_exploration.md | Or `[data-test='username']` |
+| Password input | `page.get_by_placeholder("Password")` | High | saucedemo_checkout_exploration.md | Or `[data-test='password']` |
+| Login button | `page.get_by_role("button", name="Login")` | High | saucedemo_checkout_exploration.md | Or `[data-test='login-button']` |
+| Products heading | `page.get_by_role("heading", name="Products")` | High | saucedemo_checkout_exploration.md | Inventory landing |
+| Shopping cart link | `page.locator("[data-test='shopping-cart-link']")` | High | saucedemo_checkout_exploration.md | Icon-only; data-test is stable |
+
+#### Locator Risks
+
+- Shopping cart link has no accessible name on the anchor itself; rely on `data-test` rather than role/name.
+
 #### Notes
 
 - This scenario is the foundation for all checkout-related scenarios.

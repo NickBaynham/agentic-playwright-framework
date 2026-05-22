@@ -12,3 +12,5 @@ Apply per locator used in tests, page objects, or components. Mark each item Pas
 | Stable CSS used only when no accessible locator works | | |
 | XPath used only as a last resort, with a comment explaining why | | |
 | Locator reflects user behavior rather than DOM structure | | |
+| Final locator was selected after reviewing exploration locator candidates when available | | |
+| Locator decision (Accepted / Accepted with Scope / Modified / Rejected / Needs Review) is recorded in the implementation report | | |

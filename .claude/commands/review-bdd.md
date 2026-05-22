@@ -15,6 +15,9 @@ Arguments: `$ARGUMENTS`
 2. Apply `.claude/skills/exploratory-to-bdd/checklists/bdd_quality_checklist.md`.
 3. Apply `.claude/skills/exploratory-to-bdd/checklists/ambiguity_and_defect_checklist.md`.
 4. Identify ambiguity, duplication, broad scenarios, missing test data, vague expected outcomes, and invented requirements.
+4a. Verify Gherkin remains behavior-focused and free of raw selectors (CSS, XPath, `data-test`, role+name pairs used as selectors).
+4b. Verify Markdown BDD preserves useful locator candidates as optional Automation Notes when the source exploration provided them.
+4c. Verify locator risks are preserved where relevant.
 5. Recommend concrete revisions.
 6. Write or update a BDD quality review file at `specs/bdd/reviews/<feature_name>_bdd_quality_review.md` using `templates/bdd_quality_review_template.md`.
 7. Do not modify the source BDD spec or feature file unless explicitly asked.

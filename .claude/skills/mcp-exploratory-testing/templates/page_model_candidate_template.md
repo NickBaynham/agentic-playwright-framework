@@ -23,6 +23,15 @@ Candidate page models below are design observations from exploration only. They 
 - <Assertion 1>
 - <Assertion 2>
 
+### Locator Candidates
+
+| Element | Candidate Locator | Confidence | Notes |
+|---|---|---|---|
+
+### Locator Risks
+
+- <Risk 1>
+
 ### Risks
 
 - <Risk 1>

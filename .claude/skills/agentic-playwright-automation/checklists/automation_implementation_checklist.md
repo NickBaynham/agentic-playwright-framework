@@ -17,3 +17,5 @@ Apply before, during, and after generating automation. Mark each item Pass, Fail
 | New test executed when execution is authorized | | |
 | Related tests executed when execution is authorized | | |
 | Human review explicitly requested | | |
+| Locator candidates from exploration / BDD automation notes were read | | |
+| Locator Decision Log included in the implementation report | | |

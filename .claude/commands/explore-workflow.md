@@ -19,6 +19,9 @@ Arguments: `$ARGUMENTS`
 6. Record pages visited, actions performed, observed outcomes, state changes (URL, cart badge, button text, validation messages, confirmation messages), data used, anomalies, and tooling notes.
 7. Classify each anomaly using the anomaly report template. Keep application anomalies and tooling anomalies in distinct rows.
 8. Identify candidate test cases and candidate page models, using the corresponding templates. Do not generate BDD specs, Gherkin files, page object code, or Playwright/PyTest code.
+8a. Capture locator candidates for meaningful workflow elements: fields, buttons, links, headings, menus, product cards, cart badges, validation messages, confirmation messages, repeated/dynamic controls. For each candidate, record element name, type, role, accessible name/text, placeholder/label, test ID/data attribute, candidate Playwright locator, confidence (High/Medium/Low), rationale, and notes/risks. Treat candidates as exploration evidence, not final implementation.
+8b. Record locator risks (dynamic, repeated, hidden, conditional, or ambiguous elements) and repeated/dynamic element notes (parent-child relationships, scoping strategies).
+8c. Populate the Automation Handoff Notes section: recommended page models, locator candidates to review, locator risks, data dependencies for locators, and tooling interaction notes.
 9. Produce the session report at `sessions/mcp-exploration/<app-name>/<workflow-name>_session.md`, using `kebab-case` for `<app-name>` and `<workflow-name>`.
 10. If the session report grows beyond roughly 400 lines, split observations, anomalies, and test ideas into separate reports under `reports/exploration/<app-name>/`.
 11. Apply the Final Review Checklist from the skill before returning.
